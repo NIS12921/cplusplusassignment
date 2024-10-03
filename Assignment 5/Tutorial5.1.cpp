@@ -12,7 +12,7 @@ private:
     int Expression();
     int Term();
     int Factor();
-    void skipWhitespace();
+    void skip_space();
 public:
     Expr(const char* e) : expr(e), i(0) {}
     int eval();
@@ -23,7 +23,7 @@ void Expr::print() {
     cout << expr << endl;
 }
 
-void Expr::skipWhitespace() {
+void Expr::skip_space() {
     while (i < expr.size() && isspace(expr[i])) {
         i++;
     }
@@ -37,10 +37,10 @@ int Expr::eval() {
 int Expr::Expression() {
     int result = Term();
     while (i < expr.size()) {
-        skipWhitespace();
+        skip_space();
         if (i < expr.size() && (expr[i] == '+' || expr[i] == '-')) {
             char op = expr[i++];
-            skipWhitespace();
+            skip_space();
             int right = Term();
             result = (op == '+') ? result + right : result - right;
         } else {
@@ -53,10 +53,10 @@ int Expr::Expression() {
 int Expr::Term() {
     int result = Factor();
     while (i < expr.size()) {
-        skipWhitespace();
+        skip_space();
         if (i < expr.size() && (expr[i] == '*' || expr[i] == '/')) {
             char op = expr[i++];
-            skipWhitespace();
+            skip_space();
             int right = Factor();
             if (op == '/') {
                 if (right == 0) {
@@ -75,7 +75,7 @@ int Expr::Term() {
 
 int Expr::Factor() {
     int value = 0;
-    skipWhitespace();
+    skip_space();
     while (i < expr.size() && isdigit(expr[i])) {
         value = value * 10 + (expr[i] - '0');
         i++;
