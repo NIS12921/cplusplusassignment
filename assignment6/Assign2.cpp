@@ -21,6 +21,7 @@ const foo& val = o->getFoo();
 cout << "val.i=" << val.i << std::endl;
 delete o;
 cout << "val.i=" << val.i << std::endl;
+return 0;
 }
 
 /*
