@@ -5,7 +5,7 @@ struct X {
           X(){cout << "default constructor\n";};
           X(X&& x){ cout << "move constructor\n";};
           X(const X&x){cout << "copy constructor\n";};
-          constexpr X& operator=(const X&){cout << "copy assignment\n"; return *this;};
+          X& operator=(const X&){cout << "copy assignment\n"; return *this;};
           ~X(){cout << "Destructor\n";};
      };
 
